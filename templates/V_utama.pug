@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Halaman Utama
+        style   
+            include ../style/bootstrap.css
+            include ../style/custom.min.css    
+
+        script(src='https://kit.fontawesome.com/64d58efce2.js' crossorigin="anonymous")
+    body.nav-md
+
+            div(class="container body")
+                div(class="main_container")
+                    div(class="col-md-3 left_col")
+                        div(class="left_col scroll-view")
+                            div.navbar.nav_title
+                                a(href="/main" class="logo-navbar") Tugas 5 
+                            div.clearfix
+                            div(id="sidebar-menu" class="main_menu_side hidden-print main_menu")
+                                div(class="menu_section")
+                                    h3 Menu
+                                    ul(class="nav side-menu")
+                                        li.active
+                                            a(href="#") #[i.fa.fa-home.fa.fw] Beranda
+                                        li
+                                            a(href="#") #[i.fa.fa-list.fa.fw] Kategori
+                                        li
+                                            a(href="#") #[i.fa.fa-boxes.fa.fw] Data Barang
+                                        li
+                                            a(href="#") #[i.fa.fa-users.fa.fw] Data User
+                                        li
+                                            a(href="#") #[i.fa.fa-sign-out.fa.fw] Keluar ( #{username} )
+                                                
+                    //- Top Navigation
+                    div(class="top_nav")
+                        div(class="nav_menu")
+                            div(class="nav toggle")
+                                a(id="menu_toggle") #[i.fa.fa-bars]
+
+                    //- Page Content
+                    div(class="right_col" role="main" style="min-height: 92.3vh")
+                        div.row
+
+                    //- Footer
+                    footer
+                        div.text-center
+                            h6 Bootstrap Admin Template by Fadil Faishal Nafis
+                        div.clearfix
+
+            script
+                include ../style/jquery.min.js
+                include ../style/bootstrap.bundle.min.js
+                include ../style/custom.min.js

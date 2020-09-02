@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Register
+        style   
+            include ../style/bootstrap.css
+            include ../style/custom.min.css    
+
+        script(src='https://kit.fontawesome.com/64d58efce2.js' crossorigin="anonymous")
+
+    body.login
+        div
+            div.login_wrapper
+                div.animate.form.login_form
+                    section.login_content
+                        if msg 
+                            div(class="alert alert-danger")
+                                p #{msg}
+                        form(action="/register", method="post")
+                            h1 #[i.fa.fa-users ] Register
+                            div.form-group
+                                input(type="text" name="username" class="form-control" placeholder="Masukan Nama User" required="")
+                            div.form-group
+                                input(type="email" name="email" class="form-control" placeholder="Masukan Email" required="")
+                            div.form-group
+                                input(type="password" name="password" class="form-control" placeholder="Masukan Kata Sandi" required="")
+                            div.form-group
+                                button(type="submit" class="btn btn-md btn-primary") #[i.fa.fa-plus-circle ] Tambah
+                            div.separator
+                                div.clearfix
+                                a(href="/")
+                                    h2 #[i.fa.fa-arrow-left ] Kembali ke halaman utama
+                                p ©2020 its a Bootstrap 3 template. Fadil Faishal
