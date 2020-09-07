@@ -4,11 +4,13 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Halaman Utama
-        style   
-            include ../style/bootstrap.css
-            include ../style/custom.min.css    
+        link(rel="stylesheet", href="./style/bootstrap.css")
+        link(rel="stylesheet", href="./style/custom.min.css")
+        link(rel="stylesheet", href="./fontawesome/all.min.css")
+        link(rel="stylesheet", href="./style/app.css")
 
         script(src='https://kit.fontawesome.com/64d58efce2.js' crossorigin="anonymous")
+        
     body.nav-md
 
             div(class="container body")
@@ -16,22 +18,23 @@ html(lang="en")
                     div(class="col-md-3 left_col")
                         div(class="left_col scroll-view")
                             div.navbar.nav_title
-                                a(href="/main" class="logo-navbar") Tugas 5 
+                                a(href="/main") 
+                                    img(src="./img/Contoh3.jpg")
                             div.clearfix
+                            br
+                            br
                             div(id="sidebar-menu" class="main_menu_side hidden-print main_menu")
                                 div(class="menu_section")
                                     h3 Menu
                                     ul(class="nav side-menu")
                                         li.active
-                                            a(href="#") #[i.fa.fa-home.fa.fw] Beranda
+                                            a(href="http://localhost:3000/main") #[i.fa.fa-home.fa.fw] Beranda
                                         li
-                                            a(href="#") #[i.fa.fa-list.fa.fw] Kategori
+                                            a(href="http://localhost:3000/barang") #[i.fa.fa-boxes.fa.fw] Data Barang
                                         li
-                                            a(href="#") #[i.fa.fa-boxes.fa.fw] Data Barang
+                                            a(href="http://localhost:3000/user") #[i.fa.fa-users.fa.fw] Data User
                                         li
-                                            a(href="#") #[i.fa.fa-users.fa.fw] Data User
-                                        li
-                                            a(href="#") #[i.fa.fa-sign-out.fa.fw] Keluar ( #{username} )
+                                            a(href="http://localhost:3000/logout") #[i.fa.fa-sign-out.fa.fw] #{username} Keluar
                                                 
                     //- Top Navigation
                     div(class="top_nav")
@@ -42,14 +45,28 @@ html(lang="en")
                     //- Page Content
                     div(class="right_col" role="main" style="min-height: 92.3vh")
                         div.row
+                            div.col-md-12
+                                h3.text-dasbor Selamat Datang di Tokoqu, Ayoo belanja sepuasnya !
+                                br
+                                div.card.col-md-3.mr-4
+                                    div.row
+                                        div.col-md-4.bg-primary.text-white
+                                            h1.text-center #[i.fa.fa-users] 
+                                        div.col-md-8
+                                            h1 #{totalUser}
+                                div.card.col-md-3
+                                    div.row
+                                        div.col-md-4.bg-info.text-white
+                                            h1.text-center #[i.fa.fa-boxes] 
+                                        div.col-md-8
+                                            h1 #{totalBarang}
 
                     //- Footer
                     footer
                         div.text-center
                             h6 Bootstrap Admin Template by Fadil Faishal Nafis
-                        div.clearfix
-
-            script
-                include ../style/jquery.min.js
-                include ../style/bootstrap.bundle.min.js
-                include ../style/custom.min.js
+            script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+            script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+            script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')
+            script(src="./style/custom.min.js")
+            script(src="./fontawesome/all.min.js")

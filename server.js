@@ -8,6 +8,8 @@ var NodeSession = require('node-session')
 var register = './templates/V_register.pug';
 var login = './templates/V_login.pug';
 var pageUtama = './templates/V_utama.pug';
+var editUser = './templates/V_editUser.pug';
+var dataUser = './templates/V_dataUser.pug';
 
 var db = Client.createConnection({
     host: 'localhost',
@@ -80,8 +82,8 @@ var server = http.createServer(function (req, res) {
             var template = pug.renderFile(register);
             res.end(template);
 
-        } else if (req.url === "/main") { 
-            
+        } else if (req.url === "/datauser" && req.method === 'GET') { 
+
             if(!req.session.has('username')) {
                 res.writeHead(302, {'Location' : '/'});
                 res.end();
@@ -94,11 +96,44 @@ var server = http.createServer(function (req, res) {
                     }
                     var no = 0;
                     var username = req.session.get('username');
-                    var template = pug.renderFile(pageUtama, {data:result, username:username, no : no});
+                    var template = pug.renderFile(dataUser, {data:result, username:username, no : no});
                     res.writeHead(200, {"Content-Type" : "text/html"});
                     res.end(template);
                 })
+            }
 
+        } else if (url.parse(req.url).pathname === '/EditUser' && req.method === 'GET') {
+            var id = qs.parse(url.parse(req.url).query).id;
+            var sql = 'SELECT * FROM tb_user WHERE id = ?';
+
+            db.query(sql, [id], function (error, result) {
+                if (error) {
+                    throw error;
+                }
+
+                console.log(result[0]);
+                var template = pug.renderFile(editUser, {data: result[0]})
+                res.end(template)
+            })
+        } else if (req.url === "/main") { 
+            
+            if(!req.session.has('username')) {
+                res.writeHead(302, {'Location' : '/'});
+                res.end();
+            } else if (req.session.has('username')) {
+                db.query(`SELECT COUNT(*) AS cnt FROM tb_user`, function (error, result) {
+                    if (error)
+                    {   
+                        console.log('Gagal menampilkan data');
+                        throw error;
+                    }
+                    var no = 0;
+                    var totalData = result[0]['cnt'];
+                    var username = req.session.get('username');
+                    var template = pug.renderFile(pageUtama, {data:result, username:username, no:no, TotalData:totalData});
+                    res.writeHead(200, {"Content-Type" : "text/html"});
+                    res.end(template);
+                })
             }
             
         } else if (req.url === "/register" && req.method === 'POST') {
@@ -155,8 +190,7 @@ var server = http.createServer(function (req, res) {
             // direcct ke login
             res.writeHead(302, {'Location' : "/"});
             res.end();
-        }
-         else {
+        } else {
             res.writeHead(200, {"Content-Type" : "text/html"});
             res.end('Halaman tidak ditemukan');   
         }
@@ -165,3 +199,4 @@ var server = http.createServer(function (req, res) {
 })
 
 server.listen(4000);
+console.log('Server aktif di port 4000');

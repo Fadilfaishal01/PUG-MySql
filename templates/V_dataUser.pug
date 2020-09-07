@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Data User
+        link(rel="stylesheet", href="./style/bootstrap.css")
+        link(rel="stylesheet", href="./style/custom.min.css")
+        link(rel="stylesheet", href="./fontawesome/all.min.css")
+        link(rel="stylesheet", href="./style/app.css")
+
+        script(src='https://kit.fontawesome.com/64d58efce2.js' crossorigin="anonymous")
+        
+    body.nav-md
+        div(class="container body")
+            div(class="main_container")
+                div(class="col-md-3 left_col")
+                    div(class="left_col scroll-view")
+                        div.navbar.nav_title
+                            a(href="/main")
+                                img(src="./img/Contoh3.jpg")
+                        div.clearfix
+                        br
+                        br
+                        div(id="sidebar-menu" class="main_menu_side hidden-print main_menu")
+                            div(class="menu_section")
+                                h3 Menu
+                                ul(class="nav side-menu")
+                                    li
+                                        a(href="http://localhost:3000/main") #[i.fa.fa-home.fa.fw] Beranda
+                                    li
+                                        a(href="http://localhost:3000/barang") #[i.fa.fa-boxes.fa.fw] Data Barang
+                                    li.active
+                                        a(href="http://localhost:3000/user") #[i.fa.fa-users.fa.fw] Data User
+                                    li
+                                        a(href="http://localhost:3000/logout") #[i.fa.fa-sign-out.fa.fw] Keluar
+                //- Top Navigation
+                div(class="top_nav")
+                    div(class="nav_menu")
+                        div(class="nav toggle")
+                            a(id="menu_toggle") #[i.fa.fa-bars]
+                //- Page Content
+                div(class="right_col" role="main")
+                    div.row
+                        div.col-md-12
+                            //- if(message.msg-error)
+                            //-         div(class="alert alert-danger alert-dismissible fade show" role="alert")
+                            //-             p #{message.msg-error}
+                            //-             button(type="button" class="close" data-dismiss="alert" aria-label="Close") 
+                            //-                 span(aria-hidde="true") &times;
+                            //- else if(message.msg-succes)
+                            //-     div(class="alert alert-success alert-dismissible fade show" role="alert")
+                            //-         p #{message.msg-succes}
+                            //-         button(type="button" class="close" data-dismiss="alert" aria-label="Close") 
+                            //-             span(aria-hidde="true") &times;
+                            h3 #[i.fa.fa-users] | Data User
+                            hr
+                            table.table.table-striped.table-bordered
+                                thead
+                                    tr.text-center.bg-info.text-white
+                                        th(width="20px") No
+                                        th Username
+                                        th Email
+                                        th(colspan="2") Aksi
+                                tbody
+                                    for q in data
+                                        tr.text-center
+                                            td= q.no
+                                            td= q.username
+                                            td= q.email
+                                            td
+                                                a(href=`#Modal-${q.id}` data-toggle="modal" class="btn btn-sm btn-info") #[i.fa.fa-edit]
+                                                form(action="/deleteUser", method="post")
+                                                    input(type="hidden", name="id" value=`${q.id}`)
+                                                    button(type="submit" class="btn btn-sm btn-danger") #[i.fa.fa-trash-alt]
+                //- Footer
+                footer
+                    div.text-center
+                        h6 Bootstrap Admin Template by Fadil Faishal Nafis
+
+                //- Modal Edit
+                for q in data
+                    div(class="modal fade" id=`Modal-${q.id}` tabindex="-1" role="dialog" aria-labelledby=`Modal${q.id}` aria-hidden="true")
+                        div(class="modal-dialog modal-dialog-centered modal-lg" role="document")
+                            div(class="modal-content")
+                                div(class="modal-header")
+                                    h5(class="modal-title") Data User : 
+                                        span.font-weight-bold= q.username 
+                                    button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                                div(class="modal-body")
+                                    form(action="/EditUser" method="post" id=`EditUser-${q.id}` autocomplete="off")
+                                        input(type="hidden" value=`${q.id}` name="idUser")
+                                        div.row
+                                            div.col-md-6
+                                                div.form-group
+                                                    label Email
+                                                    input(type="email" class="form-control" placeholder="Masukan Email" name="email" value=`${q.email}`)
+                                            div.col-md-6
+                                                div.form-group
+                                                    label Username
+                                                    input(type="text" class="form-control" placeholder="Masukan Username" name="username" value=`${q.username}`)
+                                div(class="modal-footer")
+                                        button(type="button" class="btn btn-danger" data-dismiss="modal") Batal
+                                        input.btn.btn-info(type="submit", form=`EditUser-${q.id}` value="Update")
+        script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')
+        script(src="./style/custom.min.js")
+        script(src="./fontawesome/all.min.js")

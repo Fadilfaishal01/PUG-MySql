@@ -4,9 +4,10 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Register
-        style   
-            include ../style/bootstrap.css
-            include ../style/custom.min.css    
+        link(rel="stylesheet", href="./style/bootstrap.css")
+        link(rel="stylesheet", href="./style/custom.min.css")
+        link(rel="stylesheet", href="./fontawesome/all.min.css")
+        link(rel="stylesheet", href="./style/app.css")
 
         script(src='https://kit.fontawesome.com/64d58efce2.js' crossorigin="anonymous")
 
@@ -16,8 +17,10 @@ html(lang="en")
                 div.animate.form.login_form
                     section.login_content
                         if msg 
-                            div(class="alert alert-danger")
+                            div(class="alert alert-danger alert-dismissible fade show" role="alert")
                                 p #{msg}
+                                button(type="button" class="close" data-dismiss="alert" aria-label="Close") 
+                                    span(aria-hidde="true") &times;
                         form(action="/register", method="post")
                             h1 #[i.fa.fa-users ] Register
                             div.form-group
@@ -33,3 +36,7 @@ html(lang="en")
                                 a(href="/")
                                     h2 #[i.fa.fa-arrow-left ] Kembali ke halaman utama
                                 p ©2020 its a Bootstrap 3 template. Fadil Faishal
+    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js', integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js', integrity='sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV', crossorigin='anonymous')
+    script(src="./fontawesome/all.min.js")
