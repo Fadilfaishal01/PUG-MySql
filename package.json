@@ -1,0 +1,37 @@
+{
+  "name": "tugas5",
+  "version": "1.0.0",
+  "description": "Tugas 5 NodeJS",
+  "main": "route.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.1",
+    "fs": "^0.0.1-security",
+    "hbs": "^4.1.1",
+    "http": "^0.0.1-security",
+    "mysql2": "^2.1.0",
+    "node-session": "^1.2.1",
+    "path": "^0.12.7",
+    "pug": "^3.0.0",
+    "querystring": "^0.2.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fadilfaishal01/PUG-MySql.git"
+  },
+  "author": "Fadil Faishal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fadilfaishal01/PUG-MySql/issues"
+  },
+  "homepage": "https://github.com/Fadilfaishal01/PUG-MySql#readme"
+}
